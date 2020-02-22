@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Bukmacher1612:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Bukmacher1612_jar</output-path>
+    <root id="archive" name="Bukmacher1612.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$USER_HOME$/Desktop/MatchAnalizerWithAverage/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="Bukmacher1612" />
+    </root>
+  </artifact>
+</component>

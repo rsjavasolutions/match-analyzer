@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_bukmacher1612" default="compile.module.bukmacher1612">
+  <dirname property="module.bukmacher1612.basedir" file="${ant.file.module_bukmacher1612}"/>
+  
+  <property name="module.jdk.home.bukmacher1612" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.bukmacher1612" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.bukmacher1612" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.bukmacher1612" value="-encoding UTF-8 -source 11 -target 11 ${compiler.args}"/>
+  
+  <property name="bukmacher1612.output.dir" value="${module.bukmacher1612.basedir}/out/production/Bukmacher1612"/>
+  <property name="bukmacher1612.testoutput.dir" value="${module.bukmacher1612.basedir}/out/test/Bukmacher1612"/>
+  
+  <path id="bukmacher1612.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="bukmacher1612.module.production.classpath">
+    <path refid="${module.jdk.classpath.bukmacher1612}"/>
+  </path>
+  
+  <path id="bukmacher1612.runtime.production.module.classpath">
+    <pathelement location="${bukmacher1612.output.dir}"/>
+  </path>
+  
+  <path id="bukmacher1612.module.classpath">
+    <path refid="${module.jdk.classpath.bukmacher1612}"/>
+    <pathelement location="${bukmacher1612.output.dir}"/>
+  </path>
+  
+  <path id="bukmacher1612.runtime.module.classpath">
+    <pathelement location="${bukmacher1612.testoutput.dir}"/>
+    <pathelement location="${bukmacher1612.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.bukmacher1612">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.bukmacher1612">
+    <patternset refid="excluded.from.module.bukmacher1612"/>
+  </patternset>
+  
+  <path id="bukmacher1612.module.sourcepath">
+    <dirset dir="${module.bukmacher1612.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.bukmacher1612" depends="compile.module.bukmacher1612.production,compile.module.bukmacher1612.tests" description="Compile module Bukmacher1612"/>
+  
+  <target name="compile.module.bukmacher1612.production" depends="register.custom.compilers" description="Compile module Bukmacher1612; production classes">
+    <mkdir dir="${bukmacher1612.output.dir}"/>
+    <javac2 destdir="${bukmacher1612.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.bukmacher1612}/javac">
+      <compilerarg line="${compiler.args.bukmacher1612}"/>
+      <bootclasspath refid="bukmacher1612.module.bootclasspath"/>
+      <classpath refid="bukmacher1612.module.production.classpath"/>
+      <src refid="bukmacher1612.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.bukmacher1612"/>
+    </javac2>
+    
+    <copy todir="${bukmacher1612.output.dir}">
+      <fileset dir="${module.bukmacher1612.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.bukmacher1612.tests" depends="register.custom.compilers,compile.module.bukmacher1612.production" description="compile module Bukmacher1612; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.bukmacher1612" description="cleanup module">
+    <delete dir="${bukmacher1612.output.dir}"/>
+    <delete dir="${bukmacher1612.testoutput.dir}"/>
+  </target>
+</project>

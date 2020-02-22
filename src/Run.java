@@ -12,7 +12,7 @@ public class Run {
     public static void main(String[] args) throws IOException {
 
         Window window = new Window();
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //zamykanie w procesach po zamknięciu
-        window.setVisible(true);//widoczne
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setVisible(true);
     }
 }

@@ -12,27 +12,32 @@ public class Window extends JFrame implements ActionListener {
     TeamPointer firstTeamPointer = new TeamPointer(team1);
     TeamPointer secondTeamPointer = new TeamPointer(team2);
 
+    //pola tekstowe
     private JTextField team1TextField;
     private JTextField team2TextField;
     private JTextArea resultTextField;
     private JTextArea showFirstTeam;
     private JTextArea showSecondTeam;
 
+    //etykiety
     private JLabel team1Label;
     private JLabel team2Label;
     private JLabel ownerLabel;
 
+    // przycisk
     private JButton letsPlay;
     private JButton exit;
     private JButton loadFirstTeam;
     private JButton loadSecondTeam;
 
+
     Window() throws HeadlessException {
+
 
         setSize(700, 700); // ustaw rozmiar
         setTitle("Match Analyzer"); // ustaw tytuł
         setLayout(null);
-
+        //opis
         team1Label = new JLabel("Gospodarze", JLabel.CENTER); // opis, tytuł, wyrównanie
         team1Label.setBounds(120, 5, 70, 20);
 
@@ -42,6 +47,7 @@ public class Window extends JFrame implements ActionListener {
         ownerLabel = new JLabel("RS Java Solutions. All rights reserved");
         ownerLabel.setBounds(440,560, 500,100);
 
+        //Pole tekstowe
         team1TextField = new JTextField();
         team1TextField.setBounds(60, 30, 220, 30); //ustaw położenie i wymiary
         team1TextField.setToolTipText("Wklej punkty drużyny gospodarzy"); //dymek
@@ -55,6 +61,7 @@ public class Window extends JFrame implements ActionListener {
         showFirstTeam = new JTextArea();
         showFirstTeam.setBounds(60, 100, 220, 220);
         showFirstTeam.setToolTipText("Punktacja gospodarzy");
+
 
         showSecondTeam = new JTextArea();
         showSecondTeam.setBounds(380, 100, 220, 220);
@@ -92,25 +99,32 @@ public class Window extends JFrame implements ActionListener {
         add(loadFirstTeam);
         add(loadSecondTeam);
         add(ownerLabel);
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
+
+
         Object source = e.getSource();
         if (source == exit) {
             dispose();
         } else if (source == loadFirstTeam) {
+
             showFirstTeam.setWrapStyleWord(true);
             showFirstTeam.setText(team1.showTeam()
                     + firstTeamPointer.showScoreStatus());
         } else if (source == loadSecondTeam) {
+
             showSecondTeam.setWrapStyleWord(true);
             showSecondTeam.setText(team2.showTeam()
                     + secondTeamPointer.showScoreStatus());
         } else if (source == letsPlay){
             TeamConfrontation match = new TeamConfrontation(firstTeamPointer, secondTeamPointer);
+           // match.battle();
             resultTextField.setWrapStyleWord(true);
+
             resultTextField.setText(match.estimatedPoints()
                     + "\n\n" + match.battle() + "\n\nRóżnica punktów wynosi + "
                     + match.differencePoints());
